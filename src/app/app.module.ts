@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { MessagesComponent } from './messages/messages.component';
 import { InputComponent } from './input/input.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatRoomComponent,
     MessagesComponent,
-    InputComponent
+    InputComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

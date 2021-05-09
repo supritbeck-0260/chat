@@ -31,3 +31,7 @@
 .other-text span{
     background-color: rgb(57, 170, 214);
 }
+
+.message-main::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,18 @@
+.navbar-main{
+    background-color: steelblue;
+    margin: 5px 0px;
+    padding: 5px;
+    border:1px solid silver;
+    border-radius: 5px;
+    color: white;
+}
+.navbar-main .head{
+    margin: 5px;
+}
+.navbar-main .home,.navbar-main .join , .navbar-main .exit{
+    margin: 5px;
+    padding: 5px;
+}
+.navbar-main .exit{
+    float: right;
+}

@@ -1,0 +1,6 @@
+* {box-sizing: border-box;margin: 0;padding: 0;}
+.app-main{
+    background-color: rgba(70,130,180,0.8);
+    height: 100vh;
+    border-radius: 5px;
+}
