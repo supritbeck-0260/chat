@@ -1,0 +1,31 @@
+.message-main{
+    background-color: beige;
+    width: 45vw;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+.my-text,.other-text{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+.my-text{
+    justify-content: flex-start;
+}
+.other-text{
+    justify-content: flex-end;
+}
+.my-text span,.other-text span{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+.my-text span{
+    background-color: skyblue;
+}
+.other-text span{
+    background-color: rgb(57, 170, 214);
+}
