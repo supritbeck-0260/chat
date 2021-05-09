@@ -1,0 +1,17 @@
+.input-main{
+    background-color: cornsilk;
+    width: fit-content;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-send,.input-text{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 6px;
+}

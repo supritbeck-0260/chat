@@ -1,10 +1,12 @@
 .message-main{
     background-color: beige;
     width: 45vw;
+    height: 60vh;
     margin: 5px;
     padding: 5px;
     border: 1px solid silver;
     border-radius: 5px;
+    overflow-y: scroll;
 }
 .my-text,.other-text{
     display: flex;
