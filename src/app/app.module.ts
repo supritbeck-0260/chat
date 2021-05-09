@@ -8,6 +8,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { InputComponent } from './input/input.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { JoinComponent } from './join/join.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     MessagesComponent,
     InputComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,

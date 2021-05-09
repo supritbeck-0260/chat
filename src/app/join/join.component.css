@@ -1,0 +1,27 @@
+.join-main{
+    width: fit-content;
+    height: fit-content;
+    background-color: darkkhaki;
+    margin: auto;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border:3px solid silver;
+    border-radius: 5px;
+}
+
+.join-main .join-here , .join-main .room,  .join-main .name{
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    border:1px solid silver;
+    border-radius: 5px; 
+}
+.join-main .join-btn{
+    margin: 5px;
+    padding: 5px;  
+    border:1px solid silver;
+    border-radius: 5px; 
+}
