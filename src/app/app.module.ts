@@ -7,6 +7,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { MessagesComponent } from './messages/messages.component';
 import { InputComponent } from './input/input.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ChatRoomComponent,
     MessagesComponent,
     InputComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
