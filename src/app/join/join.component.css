@@ -15,7 +15,6 @@
 .join-main .join-here , .join-main .room,  .join-main .name{
     margin: 5px;
     padding: 5px;
-    color: white;
     border:1px solid silver;
     border-radius: 5px; 
 }
