@@ -5,46 +5,7 @@
     <p class="other-text">
         <span>I am doing good.</span>
     </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
-    <p class="my-text">
-        <span>Hello there.</span>
-    </p>
-    <p class="other-text">
-        <span>I am doing good.</span>
+    <p class="my-text" *ngFor='let elem of messages'>
+        <span>{{elem.message}}</span>
     </p>
 </div>

@@ -1,4 +1,4 @@
 <div class="input-main">
-    <input type="text" class="input-text"/>
-    <button class="input-send">send</button>
+    <input type="text" [(ngModel)]='message' class="input-text"/>
+    <button class="input-send" (click)='send()'>send</button>
 </div>

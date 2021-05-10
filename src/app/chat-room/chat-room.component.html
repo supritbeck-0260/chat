@@ -1,6 +1,6 @@
 <div class="chat-main">
     <h2 class="chat-heading">Chat Room</h2>
-    <app-messages></app-messages>
-    <app-input></app-input>
+    <app-messages [messages]='chats'></app-messages>
+    <app-input (sendMessage)='getMessage($event)'></app-input>
 </div>
 
