@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../interfaces/user-interface'
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
@@ -7,7 +7,7 @@ import {User} from '../interfaces/user-interface'
 })
 export class ChatRoomComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socket: Socket) { }
   chats=[];
   getMessage(event){
      this.chats.push({message:event});
