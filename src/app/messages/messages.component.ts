@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {User} from '../interfaces/user-interface';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -8,7 +9,9 @@ import {User} from '../interfaces/user-interface';
 export class MessagesComponent implements OnInit {
   // @ViewChild('list',{static: false}) private list: ElementRef;
   @Input() messages=[];
-  constructor() { }
+  constructor(private socket: Socket) { 
+    // this.socket.emit('getDoc', 'hello');
+  }
   // ngOnChanges(changes){
   //   console.log('onchanges',changes)
   // }
