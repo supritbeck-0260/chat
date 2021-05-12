@@ -11,6 +11,7 @@ import { InputComponent } from './input/input.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { JoinComponent } from './join/join.component';
+import { SocketService } from './socket.service';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
@@ -32,7 +33,7 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     FormsModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
+import { SocketService } from '../socket.service';
 interface User{
   room:string;
   name:string;
@@ -12,13 +13,15 @@ interface User{
 
 export class JoinComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private realtime:SocketService) { }
   user:User={
     room:'',
     name:''
   };
   joinHandler(){
-    if(this.user.room && this.user.name) this.router.navigate(['chat']);
+    if(!this.user.room || !this.user.name) return;
+    this.router.navigate(['chat']);
+    this.realtime.socket.emit('newjoinee',this.user);
   }
   ngOnInit() {
   }

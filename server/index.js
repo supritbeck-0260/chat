@@ -11,5 +11,8 @@ const io = socket(server, {
 
   io.on('connection',(sockets)=>{
     console.log('new user connected.',sockets.id);
+    sockets.on('newjoinee',data=>{
+      if(data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'Join'});
+    })
   });
   
