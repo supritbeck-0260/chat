@@ -10,6 +10,6 @@ const io = socket(server, {
   });
 
   io.on('connection',(sockets)=>{
-    console.log('new user connected.');
+    console.log('new user connected.',sockets.id);
   });
   
