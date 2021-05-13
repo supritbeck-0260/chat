@@ -19,19 +19,25 @@
 .other-text{
     justify-content: flex-end;
 }
-.my-text span,.other-text span{
+.my-text .message,.other-text .message{
     margin: 5px;
     padding: 5px;
     border: 1px solid silver;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
-.my-text span{
+.my-text .message{
     background-color: skyblue;
 }
-.other-text span{
+.other-text .message{
     background-color: rgb(57, 170, 214);
 }
 
 .message-main::-webkit-scrollbar {
     display: none;
+}
+
+.my-text .type , .other-text .type {
+ font-size: 10px;
 }

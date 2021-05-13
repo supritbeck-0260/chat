@@ -1,11 +1,21 @@
-<div class="message-main" #list>
-    <p class="my-text">
-        <span>Hello there.</span>
+<div class="message-main">
+    <!-- <p class="my-text">
+            
+            <span class="message">
+                <span class="type">You</span>
+                Hello there.
+            </span>
     </p>
     <p class="other-text">
-        <span>I am doing good.</span>
-    </p>
+            <span class="message">
+                <span class="type">Rick</span>
+                Hello there.
+            </span>
+    </p> -->
     <p [ngClass]="{'other-text':elem.type == 'other','my-text': elem.type == 'me'}" *ngFor='let elem of messages'>
-        <span>{{elem.message}}</span>
+        <span class="message">
+            <span class="type" *ngIf='elem.user'>{{elem.user.name}}</span>
+            {{elem.message}}
+        </span>
     </p>
 </div>

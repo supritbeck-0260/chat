@@ -1,5 +1,5 @@
 <div class="chat-main">
-    <h2 class="chat-heading">Chat Room</h2>
+    <h2 class="chat-heading">{{user.room}} Room</h2>
     <app-messages [messages]='chats'></app-messages>
     <app-input (sendMessage)='getMessage($event)'></app-input>
 </div>
