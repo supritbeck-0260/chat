@@ -13,7 +13,6 @@ export class MessagesComponent implements OnInit {
     this.user = this.store.get('user');
     this.realtime.socket.on(this.user.room,data=>{
       this.messages.push(data);
-      console.log(this.messages);
     })
   }
 
