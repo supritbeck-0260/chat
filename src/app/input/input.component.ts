@@ -10,7 +10,8 @@ export class InputComponent implements OnInit {
   constructor() { }
   message:string='';
   send(){
-    if(this.message) this.sendMessage.emit(this.message);
+    if(!this.message) return;
+    this.sendMessage.emit(this.message);
     this.message = '';
   }
   ngOnInit() {

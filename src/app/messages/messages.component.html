@@ -5,7 +5,7 @@
     <p class="other-text">
         <span>I am doing good.</span>
     </p>
-    <p [ngClass]="{'other-text':elem.type == 'Join','my-text': elem.type == 'me'}" *ngFor='let elem of messages'>
+    <p [ngClass]="{'other-text':elem.type == 'other','my-text': elem.type == 'me'}" *ngFor='let elem of messages'>
         <span>{{elem.message}}</span>
     </p>
 </div>
