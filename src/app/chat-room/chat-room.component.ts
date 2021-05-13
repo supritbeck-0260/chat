@@ -16,6 +16,9 @@ export class ChatRoomComponent implements OnInit {
      this.chats.push({message:event,type:'me',user:{name:'You'}});
      this.realtime.socket.emit('message',{message:event,user:this.user});
   }
+  ngOnDestroy(){
+    this.realtime.socket.emit('disconnected',{user:this.user});
+  }
   ngOnInit() {
   }
 

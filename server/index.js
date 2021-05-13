@@ -16,5 +16,8 @@ const io = socket(server, {
     sockets.on('message',data=>{
     if(data) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
   });
+  sockets.on('disconnected',(data)=>{
+    sockets.broadcast.emit(data.user.room,{message:`${data.user.name} left the ${data.user.room} room.`,type:'other'});
+  });
   });
   

@@ -17,6 +17,7 @@ export class MessagesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.realtime.socket.emit('newjoinee',this.user);
   }
 
 }
