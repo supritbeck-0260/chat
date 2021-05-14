@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { JoinComponent } from './join/join.component';
 import { SocketService } from './socket.service';
+import { ScrollDirective } from './scroll.directive';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
@@ -25,7 +26,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     InputComponent,
     NavbarComponent,
     HomeComponent,
-    JoinComponent
+    JoinComponent,
+    ScrollDirective
   ],
   imports: [
     BrowserModule,
