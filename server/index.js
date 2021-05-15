@@ -11,13 +11,27 @@ const io = socket(server, {
 
   io.on('connection',(sockets)=>{
     sockets.on('newjoinee',data=>{
-      if(data && data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'other'});
+      try {
+        if(data && data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'other'});
+      } catch (error) {
+        console.log(error)
+      }
+     
     });
     sockets.on('message',data=>{
-    if(data) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
+      try {
+        if(data) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
+      } catch (error) {
+        console.log(error)
+      }
   });
   sockets.on('disconnected',(data)=>{
-    sockets.broadcast.emit(data.user.room,{message:`${data.user.name} left the ${data.user.room} room.`,type:'other'});
+    try {
+      if(data) sockets.broadcast.emit(data.user.room,{message:`${data.user.name} left the ${data.user.room} room.`,type:'other'});
+    } catch (error) {
+      console.log(error)
+    }
+   
   });
   });
   

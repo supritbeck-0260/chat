@@ -12,4 +12,7 @@ export class LocalstorageService {
   set(item,value){
     localStorage.setItem(item,JSON.stringify(value))
   }
+  remove(item){
+    localStorage.removeItem(item);
+  }
 }

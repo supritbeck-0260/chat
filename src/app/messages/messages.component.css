@@ -1,5 +1,5 @@
 .message-main{
-    background-color: beige;
+    background: linear-gradient(to right,rgb(255, 255, 255),rgb(255, 255, 255,0.5));
     width: 45vw;
     height: 60vh;
     margin: 5px;
@@ -22,15 +22,17 @@
 .my-text .message,.other-text .message{
     margin: 5px;
     padding: 5px;
-    border: 1px solid silver;
+    border-top: 2px solid rgb(255, 255, 255,0.5);
+    border-left: 2px solid rgb(255, 255, 255,0.5);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-}
-.my-text .message{
-    background-color: skyblue;
+    box-shadow: 15px 15px 15px rgb(0, 0, 0,0.4);
 }
 .other-text .message{
+    background-color: skyblue;
+}
+.my-text .message{
     background-color: rgb(57, 170, 214);
 }
 

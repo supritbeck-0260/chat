@@ -15,6 +15,7 @@
 }
 .navbar-main .exit{
     float: right;
+    cursor: pointer;
 }
 .navbar-main a{
     color: inherit;
