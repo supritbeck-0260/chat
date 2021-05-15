@@ -5,9 +5,7 @@ import { Directive , ElementRef , HostListener } from '@angular/core';
 })
 export class ScrollDirective {
 
-  constructor(private elem:ElementRef) {
-    console.log(elem.nativeElement);
-   }
+  constructor(private elem:ElementRef) {}
    ngDoCheck() {
      if(!this.elem.nativeElement) return;
     console.log(this.elem.nativeElement.scrollTop,this.elem.nativeElement.scrollHeight);
