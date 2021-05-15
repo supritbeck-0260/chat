@@ -11,8 +11,7 @@ const io = socket(server, {
 
   io.on('connection',(sockets)=>{
     sockets.on('newjoinee',data=>{
-      console.log(data);
-      if(data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'other'});
+      if(data && data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'other'});
     });
     sockets.on('message',data=>{
     if(data) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
