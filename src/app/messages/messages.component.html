@@ -14,7 +14,7 @@
     </p> -->
     <p [ngClass]="{'other-text':elem.type == 'other','my-text': elem.type == 'me'}" *ngFor='let elem of messages'>
         <span class="message">
-            <span class="type" *ngIf='elem.user'>{{elem.user.name}} {{elem.time}}</span>
+            <span class="type" *ngIf='elem.user'>{{elem.user.name}} {{elem.time | date:'shortTime' }}</span>
             {{elem.message}}
         </span>
     </p>

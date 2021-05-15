@@ -13,7 +13,7 @@ export class ChatRoomComponent implements OnInit {
   }
   chats=[];
   getMessage(event){
-     this.chats.push({message:event,type:'me',user:{name:'You'},time:new Date().toLocaleTimeString()});
+     this.chats.push({message:event,type:'me',user:{name:'You'},time:new Date()});
      this.realtime.socket.emit('message',{message:event,user:this.user});
   }
   ngOnDestroy(){

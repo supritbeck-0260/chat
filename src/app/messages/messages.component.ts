@@ -12,7 +12,7 @@ export class MessagesComponent implements OnInit {
   constructor(private realtime:SocketService,private store:LocalstorageService) {
     this.user = this.store.get('user');
     this.realtime.socket.on(this.user.room,data=>{
-      this.messages.push({...data,time:new Date().toLocaleTimeString()});
+      this.messages.push({...data,time:new Date()});
     })
   }
   ngOnInit() {
