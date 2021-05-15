@@ -22,7 +22,6 @@ export class JoinComponent implements OnInit {
   joinHandler(){
     if(!this.user.room || !this.user.name) return;
     this.router.navigate(['chat']);
-    this.realtime.socket.emit('newjoinee',this.user);
     this.store.set('user',this.user);
   }
   ngOnInit() {

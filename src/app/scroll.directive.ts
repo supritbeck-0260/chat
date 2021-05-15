@@ -8,7 +8,6 @@ export class ScrollDirective {
   constructor(private elem:ElementRef) {}
    ngDoCheck() {
      if(!this.elem.nativeElement) return;
-    console.log(this.elem.nativeElement.scrollTop,this.elem.nativeElement.scrollHeight);
     this.elem.nativeElement.scrollTop=this.elem.nativeElement.scrollHeight;
 }
 
