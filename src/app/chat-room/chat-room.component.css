@@ -1,15 +1,20 @@
 .chat-main{
-    background-color: rgba(255,255,255,0.1);
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
     display: flex;
     width: 50vw;
-    margin: auto;
+    top:50%;
+    left: 50%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     border-top: 2px solid rgba(255,255,255,0.5);
     border-left: 2px solid rgba(255,255,255,0.5);
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    transform: translate(-50%,-50%);
+    animation: chatRoom 2s ease-out;
 }
 .chat-heading{
     background: linear-gradient(to right,rgb(6, 59, 55,0.1),rgb(10, 5, 32,0.3));
@@ -19,4 +24,14 @@
     border-left: 1px solid rgba(255,255,255,0.5);
     border-radius: 5px;
     color: rgba(255,255,255,0.8);
+    animation: heading 2s ease-out;
+}
+
+@keyframes chatRoom {
+    0%{width: 60vw;height: 100vh;}
+    100%{width: 50vw;height: 81vh;}
+}
+@keyframes heading {
+    0%{font-size: 0px;}
+    100%{font-size: 25px;}
 }
