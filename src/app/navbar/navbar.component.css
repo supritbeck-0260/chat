@@ -1,10 +1,11 @@
 .navbar-main{
-    background-color: steelblue;
-    margin: 5px 0px;
+    background:rgba(255, 255, 255, 0.2);
     padding: 5px;
-    border:1px solid silver;
+    border-top:2px solid rgba(255, 255, 255, 0.6);
+    border-left:2px solid rgba(255, 255, 255, 0.6);
     border-radius: 5px;
     color: white;
+    /* box-shadow: 10px 10px 40px rgba(0,0,0,0.1); */
 }
 .navbar-main .head{
     margin: 5px;
