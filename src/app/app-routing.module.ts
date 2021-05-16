@@ -18,6 +18,10 @@ const routes: Routes = [
     path:'join',
     component: JoinComponent
   },
+  {
+    path:'**',
+    component: HomeComponent
+  },
 ];
 
 @NgModule({

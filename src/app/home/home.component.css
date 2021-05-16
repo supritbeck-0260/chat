@@ -22,9 +22,6 @@
 .home-main .welcome{
     animation: welcome 2s ease-out;
 }
-/* .home-main .info{
-    animation: info 2s ease-out;
-} */
 @keyframes welcome {
     0%{margin-top: 50px;font-size: 100px;}
     100%{margin-top: 10px;font-size: 30px;}
