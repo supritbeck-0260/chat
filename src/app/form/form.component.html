@@ -1,0 +1,37 @@
+<div nz-row class="form-row">
+    <div nz-col nzSpan="24" class="form-column">
+            <nz-card class='form-card' [nzBordered]="false" nzTitle="Signup" [nzExtra]="extraTemplate">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Invalid Email!">
+                            <nz-input-group nzPrefixIcon="mail">
+                                <input formControlName="email" type="email" nz-input placeholder="Email" />
+                            </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    <nz-form-control nzErrorTip="Invalid username!">
+                        <nz-input-group nzPrefixIcon="user">
+                        <input formControlName="userName" nz-input placeholder="Username" />
+                        </nz-input-group>
+                    </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                    <nz-form-control nzErrorTip="Invalid Password!">
+                        <nz-input-group nzPrefixIcon="lock">
+                        <input formControlName="password" nz-input type="password" placeholder="Password" />
+                        </nz-input-group>
+                    </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
+                    </nz-form-control>
+                    </nz-form-item>
+                    <nz-alert *ngIf='message' nzType="error" nzMessage={{message}}></nz-alert>
+                </form>
+            </nz-card>
+        </div>
+    </div>
+    
+                

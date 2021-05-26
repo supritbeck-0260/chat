@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { HomeComponent } from './home/home.component';
 import { JoinComponent } from './join/join.component';
-
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [   
   {
@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path:'join',
     component: JoinComponent
+  },
+  {
+    path:'signup',
+    component:FormComponent
   },
   {
     path:'**',
