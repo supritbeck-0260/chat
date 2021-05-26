@@ -58,6 +58,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ZoroModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [SocketService, { provide: NZ_I18N, useValue: en_US },{ provide: NZ_ICONS, useValue: icons }],
   bootstrap: [AppComponent]

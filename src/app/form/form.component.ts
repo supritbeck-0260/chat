@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { HttpService } from '../http.service';
+import { HttpService } from '../http.service';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -18,20 +19,20 @@ export class FormComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    // this.http.signup({email:email.value,userName:userName.value,password:password.value})
-    // .subscribe((data:any)=>{
-    //   this.message = data.message;
-    //   if(data.status == 200) return this.type='success';
-    //   this.type='error'
-    //   if(data.emailFlag) this.validateForm.controls['email'].setErrors({'incorrect': true});
-    //   if(data.userNameFlag) this.validateForm.controls['userName'].setErrors({'incorrect': true});
-    //   if(data.passwordFlag) this.validateForm.controls['password'].setErrors({'incorrect': true});
+    this.http.signup({email:email.value,userName:userName.value,password:password.value})
+    .subscribe((data:any)=>{
+      this.message = data.message;
+      if(data.status == 200) return this.type='success';
+      this.type='error'
+      if(data.emailFlag) this.validateForm.controls['email'].setErrors({'incorrect': true});
+      if(data.userNameFlag) this.validateForm.controls['userName'].setErrors({'incorrect': true});
+      if(data.passwordFlag) this.validateForm.controls['password'].setErrors({'incorrect': true});
 
-    // });
+    });
 
   }
 
-  constructor(private fb: FormBuilder ) {}
+  constructor(private fb: FormBuilder ,private http:HttpService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
