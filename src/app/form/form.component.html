@@ -28,7 +28,7 @@
                         <button nz-button nzType="primary" [disabled]="!validateForm.valid">Sign up</button>
                     </nz-form-control>
                     </nz-form-item>
-                    <nz-alert *ngIf='message' nzType="error" nzMessage={{message}}></nz-alert>
+                    <nz-alert *ngIf='message' nzType={{type}} nzMessage={{message}}></nz-alert>
                 </form>
             </nz-card>
         </div>

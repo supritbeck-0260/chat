@@ -33,4 +33,13 @@ router.post('/signup',async (req,res)=>{
         }
 });
 
+router.post('/login', async (req,res)=>{
+    const {email,password} = req.body;
+    const findUser = await User.findOne({email});
+    if(!findUser) return res.json({message:'Email and Password does not match!',status:401}); 
+    const isValidPassword = await bcrypt.compare(password,findUser.password);
+    if(!isValidPassword)  return res.json({message:'Email and Password does not match!',status:401});
+    res.json({message:'Login successfull!',status:200});
+});
+
 module.exports = router;

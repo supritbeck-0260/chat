@@ -10,4 +10,7 @@ export class HttpService {
   signup(data){
     return this.http.post('api/signup',data);
   }
+  login(data){
+    return this.http.post('api/login',data);
+  }
 }
