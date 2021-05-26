@@ -8,6 +8,6 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   signup(data){
-    return this.http.post('signup',data);
+    return this.http.post('api/signup',data);
   }
 }

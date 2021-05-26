@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
 const socket = require('socket.io');
-app.get('/',(req,res)=>res.json('it is working.'))
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const router = require('./router');
+require('./db.connect');
+app.use(bodyParser.json());
+app.use('/api',router);
+app.use(cors());
+
 const server = app.listen(5000,()=>console.log('server is running...'));
 const io = socket(server, {
     cors: {
