@@ -24,6 +24,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import {ZoroModule} from './zorro/zorro.module';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(en);
 
@@ -46,6 +47,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     JoinComponent,
     ScrollDirective,
     FormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

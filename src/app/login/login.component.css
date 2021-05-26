@@ -1,0 +1,22 @@
+.form-row{
+    background: none;
+    color: rgba(255,255,255,1);
+}
+.form-column{
+    display: flex;
+    justify-content: center;
+}
+.form-card{
+    width: 300px;
+    margin: 5px;
+    padding: 5px;
+    border-top:1px solid rgba(255,255,255,0.5);
+    border-left:1px solid rgba(255,255,255,0.5);
+    border-right:none;
+    border-left:none;
+    border-radius: 5px; 
+    background: rgba(255,255,255,0.2);
+
+    font-weight: bolder;
+    backdrop-filter: blur(5px);
+}

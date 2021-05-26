@@ -4,6 +4,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { HomeComponent } from './home/home.component';
 import { JoinComponent } from './join/join.component';
 import { FormComponent } from './form/form.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [   
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:'signup',
     component:FormComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
     path:'**',
