@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -21,9 +22,8 @@ export class LoginComponent implements OnInit {
     }
     this.http.login({email:email.value,password:password.value})
     .subscribe((data:any)=>{
-      console.log(data);
       this.message = data.message;
-      if(data.status == 200) return this.type='success';
+      if(data.status == 200) return this.router.navigate(['/chat']);;
       this.type='error'
       if(data.emailFlag) this.validateForm.controls['email'].setErrors({'incorrect': true});
       if(data.passwordFlag) this.validateForm.controls['password'].setErrors({'incorrect': true});
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor(private fb: FormBuilder ,private http:HttpService) {}
+  constructor(private fb: FormBuilder ,private http:HttpService, private router:Router) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

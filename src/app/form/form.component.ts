@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TimeoutError } from 'rxjs';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -22,7 +24,7 @@ export class FormComponent implements OnInit {
     this.http.signup({email:email.value,userName:userName.value,password:password.value})
     .subscribe((data:any)=>{
       this.message = data.message;
-      if(data.status == 200) return this.type='success';
+      if(data.status == 200) return this.navigateTo();
       this.type='error'
       if(data.emailFlag) this.validateForm.controls['email'].setErrors({'incorrect': true});
       if(data.userNameFlag) this.validateForm.controls['userName'].setErrors({'incorrect': true});
@@ -32,8 +34,11 @@ export class FormComponent implements OnInit {
 
   }
 
-  constructor(private fb: FormBuilder ,private http:HttpService) {}
-
+  constructor(private fb: FormBuilder ,private http:HttpService , private router:Router) {}
+  navigateTo(){
+    this.type='success';
+    setTimeout(()=>this.router.navigate(['/login']),2000);
+  }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       email: [null, [Validators.required]],
