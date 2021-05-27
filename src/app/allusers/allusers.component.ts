@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-allusers',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllusersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpService) { }
 
   ngOnInit() {
+    this.http.getusers().subscribe(data=>console.log(data));
   }
 
 }

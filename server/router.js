@@ -23,7 +23,8 @@ router.post('/signup',async (req,res)=>{
         const user = new User({
             email,
             userName,
-            password:hashedPassword
+            password:hashedPassword,
+            date:new Date()
         });
         const save = await user.save();
         res.json({message:'Successfully signed up.',save,status:200})
@@ -34,12 +35,21 @@ router.post('/signup',async (req,res)=>{
 });
 
 router.post('/login', async (req,res)=>{
-    const {email,password} = req.body;
-    const findUser = await User.findOne({email});
-    if(!findUser) return res.json({message:'Email and Password does not match!',status:401}); 
-    const isValidPassword = await bcrypt.compare(password,findUser.password);
-    if(!isValidPassword)  return res.json({message:'Email and Password does not match!',status:401});
-    res.json({message:'Login successfull!',status:200});
+    try {
+        const {email,password} = req.body;
+        const findUser = await User.findOne({email});
+        if(!findUser) return res.json({message:'Email and Password does not match!',status:401}); 
+        const isValidPassword = await bcrypt.compare(password,findUser.password);
+        if(!isValidPassword)  return res.json({message:'Email and Password does not match!',status:401});
+        res.json({message:'Login successfull!',status:200});
+    } catch (error) {
+      res.json({message:'Server Error'})  
+    }
+});
+
+router.get('/allusers', async (req,res)=>{
+    const find = await User.find({},{_id:0,password:0});
+    res.json(find);
 });
 
 module.exports = router;

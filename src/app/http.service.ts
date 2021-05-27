@@ -13,4 +13,7 @@ export class HttpService {
   login(data){
     return this.http.post('api/login',data);
   }
+  getusers(){
+    return this.http.get('api/allusers');
+  }
 }
