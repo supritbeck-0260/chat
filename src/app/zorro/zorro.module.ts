@@ -4,6 +4,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 @NgModule({
   declarations: [],
   imports: [
@@ -14,6 +16,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzCardModule,
     NzInputModule,
     NzAlertModule,
+    NzListModule,
+    NzAvatarModule
   ]
 })
 export class ZoroModule { }

@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { JoinComponent } from './join/join.component';
 import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
+import { AllusersComponent } from './allusers/allusers.component';
 
 const routes: Routes = [   
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path:'users',
+    component:AllusersComponent
   },
   {
     path:'**',
