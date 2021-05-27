@@ -52,6 +52,7 @@
 .join-main .room:hover,  .join-main .name:hover{
     border-radius: 20px;
     transition-duration: 0.5s;
+    color: black;
 }
 .join-main .room{
     animation: room 1.5s ease-out;
