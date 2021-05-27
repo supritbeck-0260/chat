@@ -6,6 +6,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +18,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     NzInputModule,
     NzAlertModule,
     NzListModule,
-    NzAvatarModule
+    NzAvatarModule,
+    NzIconModule
   ]
 })
 export class ZoroModule { }
