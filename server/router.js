@@ -49,7 +49,7 @@ router.post('/login', async (req,res)=>{
 
 router.get('/allusers', async (req,res)=>{
     try {
-        const find = await User.find({},{_id:0,password:0});
+        const find = await User.find({},{__v:0,password:0,email:0});
         res.json(find);  
     } catch (error) {
         res.json({message:'Server Error!'});

@@ -3,7 +3,7 @@
         <h3 id='header'>Users</h3>
         <div *ngIf='!users' class="loader"><nz-spin nzSimple class="spin"></nz-spin></div>
         <div *ngIf='users'>
-            <p *ngFor="let user of users" class="user-list">
+            <p *ngFor="let user of users" (click)='clickHandler(user)' class="user-list">
                 <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
                 <span class="user-name">{{user.userName}}</span> 
                 <i nz-icon nzType="message" nzTheme="outline"></i>

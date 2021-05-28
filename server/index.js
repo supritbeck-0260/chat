@@ -27,14 +27,14 @@ const io = socket(server, {
     });
     sockets.on('message',data=>{
       try {
-        if(data) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
+        if(data && data.user) sockets.broadcast.emit(data.user.room,{message:data.message,type:'other',user:data.user});
       } catch (error) {
         console.log(error)
       }
   });
   sockets.on('disconnected',(data)=>{
     try {
-      if(data) sockets.broadcast.emit(data.user.room,{message:`${data.user.name} left the ${data.user.room} room.`,type:'other'});
+      if(data && data.user) sockets.broadcast.emit(data.user.room,{message:`${data.user.name} left the ${data.user.room} room.`,type:'other'});
     } catch (error) {
       console.log(error)
     }

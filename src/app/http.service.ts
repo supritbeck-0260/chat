@@ -16,4 +16,7 @@ export class HttpService {
   getusers(){
     return this.http.get('api/allusers');
   }
+  gotoRoom(data){
+    return this.http.post('api/room',data);
+  }
 }
