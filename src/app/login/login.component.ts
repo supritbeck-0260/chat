@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.http.login({email:email.value,password:password.value})
     .subscribe((data:any)=>{
       this.message = data.message;
-      if(data.status == 200) return this.router.navigate(['chat']);;
+      if(data.status == 200) return this.router.navigate(['users']);;
       this.type='error'
       if(data.emailFlag) this.validateForm.controls['email'].setErrors({'incorrect': true});
       if(data.passwordFlag) this.validateForm.controls['password'].setErrors({'incorrect': true});
