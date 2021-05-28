@@ -17,6 +17,11 @@ export class HttpService {
     return this.http.get('api/allusers');
   }
   gotoRoom(data){
-    return this.http.post('api/room',data);
+    const {name,_id,userName} = data;
+    return this.http.post('api/room',{name,_id,userName},{
+      headers:{
+        authentication:data.token
+      }
+    });
   }
 }

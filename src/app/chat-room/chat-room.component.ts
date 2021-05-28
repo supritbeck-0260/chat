@@ -10,6 +10,7 @@ export class ChatRoomComponent implements OnInit {
   user:{name:string;room:string};
   constructor(private realtime:SocketService, private store:LocalstorageService) { 
     this.user = this.store.get('user');
+    console.log(this.user)
   }
   chats=[];
   getMessage(event){

@@ -2,7 +2,9 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const User = require('./modals/user');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
+const Room = require('./modals/room');
+const Auth = require('./auth/auth');
 router.post('/signup',async (req,res)=>{
     try {
         const {email,userName,password} = req.body;
@@ -41,7 +43,10 @@ router.post('/login', async (req,res)=>{
         if(!findUser) return res.json({message:'Email and Password does not match!',status:401}); 
         const isValidPassword = await bcrypt.compare(password,findUser.password);
         if(!isValidPassword)  return res.json({message:'Email and Password does not match!',status:401});
-        res.json({message:'Login successfull!',status:200});
+
+        const token = jwt.sign({id:findUser._id,name:findUser.userName},process.env.SECRET_KEY,{expiresIn:'24h'});
+        
+        res.json({message:'Login successfull!',name:findUser.userName,token,status:200});
     } catch (error) {
       res.json({message:'Server Error'})  
     }
@@ -54,6 +59,12 @@ router.get('/allusers', async (req,res)=>{
     } catch (error) {
         res.json({message:'Server Error!'});
     }
+});
+
+router.post('/room',Auth,async (req,res)=>{
+    const {_id,userName} = req.body;
+    const {id,name} = req.user;
+    console.log({_id,userName,id,name});
 });
 
 module.exports = router;

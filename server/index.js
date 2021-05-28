@@ -3,11 +3,13 @@ const app = express();
 const socket = require('socket.io');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const router = require('./router');
 require('./db.connect');
 app.use(bodyParser.json());
 app.use('/api',router);
 app.use(cors());
+app.use(cookieParser());
 
 const server = app.listen(5000,()=>console.log('server is running...'));
 const io = socket(server, {
