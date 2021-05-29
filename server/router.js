@@ -70,6 +70,7 @@ router.post('/room',Auth,async (req,res)=>{
     try {
         const {_id,userName} = req.body;
         const {id,name} = req.user;
+        if(_id == id) return res.json({message:'You cannot message yourself!',status:400});
         const findMyRooms = await Room.findById({_id:id});
         const findHisRooms = await Room.findById({_id:_id});
     
