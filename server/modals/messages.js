@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const messageSchema = mongoose.Schema({
     texts:[
         {
-            text:String,
+            message:String,
             date:String,
             name:String
         }
