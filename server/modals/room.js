@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 
 const roomSchema = mongoose.Schema({
-    users:Array,
-    date:String,
-    messages:[
-        {
-            name:String,
-            message:String,
-            date:String
+      chats:[
+         { 
+            id:String,
+            date:String,
+            messages:[
+                {
+                    message:String,
+                    date:String
+                }
+            ]
         }
     ]
 });

@@ -31,6 +31,10 @@ router.post('/signup',async (req,res)=>{
         const save = await user.save();
         res.json({message:'Successfully signed up.',save,status:200})
         //  create new user 
+        // Create Room 
+        const createRoom = new Room({_id:save._id});
+        createRoom.save();
+        // Create Room 
         } catch (error) {
             res.json({message:'Server Error!'});
         }
@@ -64,7 +68,32 @@ router.get('/allusers', async (req,res)=>{
 router.post('/room',Auth,async (req,res)=>{
     const {_id,userName} = req.body;
     const {id,name} = req.user;
-    console.log({_id,userName,id,name});
+    const findMyRooms = await Room.findById({_id:id});
+    const findHisRooms = await Room.findById({_id:_id});
+
+    if(findMyRooms && findHisRooms){
+    const findChatRoom = findMyRooms.chats.find(elem=>elem.id==_id);
+        if(findChatRoom) return res.json({room:findChatRoom._id,status:200});
+    }
+    
+    const user1 = {
+        id:id,
+        date:new Date()
+    }
+    findHisRooms.chats.push(user1);
+    const chatLength = findHisRooms.chats.length;
+    const user2 = {
+        _id:findHisRooms.chats[chatLength-1]._id,
+        id:_id,
+        date:new Date()
+    }
+    findMyRooms.chats.push(user2);
+    findMyRooms.save();
+    findHisRooms.save();
+    res.json({message:'Room Created.',status:200});
+
+    
+    
 });
 
 module.exports = router;

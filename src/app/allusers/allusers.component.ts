@@ -19,9 +19,9 @@ export class AllusersComponent implements OnInit {
     this.token = this.store.get('user').token;
    }
   clickHandler(user){
-    this.http.gotoRoom({...user,token:this.token}).subscribe(data=>{
+    this.http.gotoRoom({...user,token:this.token}).subscribe((data:any)=>{
       console.log(data);
-      this.router.navigate(['chat']);
+      if(data.status == 200) this.router.navigate(['chat']);
     });
     
   }
