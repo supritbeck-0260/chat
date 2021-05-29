@@ -5,7 +5,8 @@ const messageSchema = mongoose.Schema({
         {
             message:String,
             date:String,
-            name:String
+            name:String,
+            id:String
         }
     ]
 });

@@ -13,16 +13,7 @@ const liveChat=(server)=>{
           try {
             if(!data && !data.room) return
             const message = `${data.name} has joined the room.`;
-            const post = {
-                name:data.name,
-                message,
-                date:new Date()
-            }
-            let find = await Message.findById({_id:data.room});
-            if(find) find.texts.push(post);
-            else find = new Message({texts:[post], _id:data.room});
-            find.save();
-            sockets.broadcast.emit(data.room,{message,type:'other'});
+            sockets.broadcast.emit(data.room,{message,id:data.id,date:new Date()});
           } catch (error) {
             console.log(error)
           }
@@ -32,16 +23,19 @@ const liveChat=(server)=>{
           try {
             if(!data && !data.user) return 
             const message = data.message;
+            const {id,name,room} = data.user;
             const post = {
-                name:data.user.name,
+                name,
                 message,
-                date:new Date()
+                date:new Date(),
+                id:id
             }
-            let find = await Message.findById({_id:data.user.room});
+            let find = await Message.findById({_id:room});
             if(find) find.texts.push(post);
-            else find = new Message({texts:[post],_id:data.user.room});
+            else find = new Message({texts:[post],_id:room});
             find.save();
-            sockets.broadcast.emit(data.user.room,{message,type:'other',user:data.user});
+            
+            sockets.broadcast.emit(data.user.room,{message,...post,_id:room});
           } catch (error) {
             console.log(error)
           }
@@ -50,16 +44,7 @@ const liveChat=(server)=>{
         try {
           if(!data && !data.user) return 
           const message = `${data.user.name} left the room.`;
-          const post = {
-            name:data.user.name,
-            message,
-            date:new Date()
-        }
-            let find = await Message.findById({_id:data.user.room});
-            if(find) find.texts.push(post);
-            else find = new Message({texts:[post], _id:data.user.room});
-            find.save();
-            sockets.broadcast.emit(data.user.room,{message,type:'other'});
+            sockets.broadcast.emit(data.user.room,{message,id:data.id,date:new Date()});
         } catch (error) {
           console.log(error)
         }

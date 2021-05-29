@@ -24,4 +24,7 @@ export class HttpService {
       }
     });
   }
+  getMessages(data){
+    return this.http.post('api/messages',data);
+  }
 }

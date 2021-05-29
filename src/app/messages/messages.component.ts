@@ -12,11 +12,10 @@ export class MessagesComponent implements OnInit {
   constructor(private realtime:SocketService,private store:LocalstorageService) {}
 
   ngOnInit() {
-    console.log(this.user);
     if(!this.user) return;
     this.realtime.socket.emit('newjoinee',this.user);
     this.realtime.socket.on(this.user.room,data=>{
-      this.messages.push({...data,time:new Date()});
+      this.messages.push({...data});
     })
   }
 

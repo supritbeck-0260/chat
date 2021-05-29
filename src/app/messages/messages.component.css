@@ -43,3 +43,7 @@
 .my-text .type , .other-text .type {
  font-size: 10px;
 }
+.message-time{
+    margin: 0 5px;
+    font-size: 8px;
+}

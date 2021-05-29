@@ -20,7 +20,6 @@ export class AllusersComponent implements OnInit {
    }
   clickHandler(user){
     this.http.gotoRoom({...user,token:this.token}).subscribe((data:any)=>{
-      console.log(data);
       if(data.status == 200) this.router.navigate(['chat',{room:data.room,name:data.name}]);
     });
     

@@ -9,7 +9,8 @@ interface response{
   token?:string,
   status:number
   emailFlag?:string,
-  passwordFlag?:string
+  passwordFlag?:string,
+  id?:string
 }
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.message = data.message;
  
       if(data.status == 200) {
-        this.store.set('user',{name:data.name,token:data.token})
+        this.store.set('user',{name:data.name,token:data.token,id:data.id})
         this.router.navigate(['users']);
         return 
       };

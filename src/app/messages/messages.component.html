@@ -12,9 +12,12 @@
                 Hello there.
             </span>
     </p> -->
-    <p [ngClass]="{'other-text':elem.type == 'other','my-text': elem.type == 'me'}" *ngFor='let elem of messages'>
+    <p [ngClass]="{'other-text':elem.id != user.id,'my-text': elem.id == user.id}" *ngFor='let elem of messages'>
         <span class="message">
-            <span class="type" *ngIf='elem.user'>{{elem.user.name}} {{elem.time | date:'shortTime' }}</span>
+            <span class="type" *ngIf='elem'>
+               <span *ngIf='elem.id == user.id'>You</span><span *ngIf='elem.id != user.id'>{{elem.name}}</span> 
+               <span class="message-time">{{elem.date | date:'short'}}</span>
+            </span>
             {{elem.message}}
         </span>
     </p>

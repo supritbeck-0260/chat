@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Room = require('./modals/room');
 const Auth = require('./auth/auth');
+const Message = require('./modals/messages');
 router.post('/signup',async (req,res)=>{
     try {
         const {email,userName,password} = req.body;
@@ -50,7 +51,7 @@ router.post('/login', async (req,res)=>{
 
         const token = jwt.sign({id:findUser._id,name:findUser.userName},process.env.SECRET_KEY,{expiresIn:'24h'});
         
-        res.json({message:'Login successfull!',name:findUser.userName,token,status:200});
+        res.json({message:'Login successfull!',id:findUser._id,name:findUser.userName,token,status:200});
     } catch (error) {
       res.json({message:'Server Error'})  
     }
@@ -66,34 +67,45 @@ router.get('/allusers', async (req,res)=>{
 });
 
 router.post('/room',Auth,async (req,res)=>{
-    const {_id,userName} = req.body;
-    const {id,name} = req.user;
-    const findMyRooms = await Room.findById({_id:id});
-    const findHisRooms = await Room.findById({_id:_id});
-
-    if(findMyRooms && findHisRooms){
-    const findChatRoom = findMyRooms.chats.find(elem=>elem.id==_id);
-        if(findChatRoom) return res.json({room:findChatRoom._id,name:userName,status:200});
-    }
+    try {
+        const {_id,userName} = req.body;
+        const {id,name} = req.user;
+        const findMyRooms = await Room.findById({_id:id});
+        const findHisRooms = await Room.findById({_id:_id});
     
-    const user1 = {
-        id:id,
-        date:new Date()
+        if(findMyRooms && findHisRooms){
+        const findChatRoom = findMyRooms.chats.find(elem=>elem.id==_id);
+            if(findChatRoom) return res.json({room:findChatRoom._id,name:userName,status:200});
+        }
+        
+        const user1 = {
+            id:id,
+            date:new Date()
+        }
+        findHisRooms.chats.push(user1);
+        const chatRoom = findHisRooms.chats[findHisRooms.chats.length-1]._id;
+        const user2 = {
+            _id:chatRoom,
+            id:_id,
+            date:new Date()
+        }
+        findMyRooms.chats.push(user2);
+        findMyRooms.save();
+        findHisRooms.save();
+        res.json({message:'Room Created.',room:chatRoom,name:userName,status:200});
+       
+    } catch (error) {
+        res.json({message:'Server Error!',status:400});
     }
-    findHisRooms.chats.push(user1);
-    const chatRoom = findHisRooms.chats[findHisRooms.chats.length-1]._id;
-    const user2 = {
-        _id:chatRoom,
-        id:_id,
-        date:new Date()
-    }
-    findMyRooms.chats.push(user2);
-    findMyRooms.save();
-    findHisRooms.save();
-    res.json({message:'Room Created.',room:chatRoom,name:userName,status:200});
-
-    
+      
     
 });
 
+router.post('/messages', async (req,res)=>{
+    const {room} = req.body;
+    const find = await Message.findById({_id:room});
+    if(find && find.texts?.length) return res.json({messages:find.texts,status:200});
+    res.json({messages:'No messages found!',status:400});
+    
+});
 module.exports = router;
