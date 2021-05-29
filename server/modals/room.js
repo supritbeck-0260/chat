@@ -5,12 +5,6 @@ const roomSchema = mongoose.Schema({
          { 
             id:String,
             date:String,
-            messages:[
-                {
-                    message:String,
-                    date:String
-                }
-            ]
         }
     ]
 });
