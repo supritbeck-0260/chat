@@ -21,7 +21,7 @@ const io = socket(server, {
   io.on('connection',(sockets)=>{
     sockets.on('newjoinee',data=>{
       try {
-        if(data && data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the ${data.room} room.`,type:'other'});
+        if(data && data.room) sockets.broadcast.emit(data.room,{message:`${data.name} has joined the room.`,type:'other'});
       } catch (error) {
         console.log(error)
       }

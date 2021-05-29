@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { LocalstorageService } from '../localstorage.service';
 import { SocketService } from '../socket.service';
 @Component({
@@ -7,18 +7,17 @@ import { SocketService } from '../socket.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  user:{name:string,room:string};
+  @Input() user:{name:string,room:string};
   @Input() messages=[];
-  constructor(private realtime:SocketService,private store:LocalstorageService) {
-    this.user = this.store.get('user');
+  constructor(private realtime:SocketService,private store:LocalstorageService) {}
+
+  ngOnInit() {
+    console.log(this.user);
     if(!this.user) return;
     this.realtime.socket.emit('newjoinee',this.user);
     this.realtime.socket.on(this.user.room,data=>{
       this.messages.push({...data,time:new Date()});
     })
-  }
-  ngOnInit() {
-
   }
 
 }

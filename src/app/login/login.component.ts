@@ -5,7 +5,7 @@ import { HttpService } from '../http.service';
 import { LocalstorageService } from '../localstorage.service';
 interface response{
   message:string,
-  userName?:string,
+  name?:string,
   token?:string,
   status:number
   emailFlag?:string,
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.message = data.message;
  
       if(data.status == 200) {
-        this.store.set('user',{name:data.userName,token:data.token})
+        this.store.set('user',{name:data.name,token:data.token})
         this.router.navigate(['users']);
         return 
       };

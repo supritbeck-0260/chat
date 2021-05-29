@@ -73,7 +73,7 @@ router.post('/room',Auth,async (req,res)=>{
 
     if(findMyRooms && findHisRooms){
     const findChatRoom = findMyRooms.chats.find(elem=>elem.id==_id);
-        if(findChatRoom) return res.json({room:findChatRoom._id,status:200});
+        if(findChatRoom) return res.json({room:findChatRoom._id,name:userName,status:200});
     }
     
     const user1 = {
@@ -81,16 +81,16 @@ router.post('/room',Auth,async (req,res)=>{
         date:new Date()
     }
     findHisRooms.chats.push(user1);
-    const chatLength = findHisRooms.chats.length;
+    const chatRoom = findHisRooms.chats[findHisRooms.chats.length-1]._id;
     const user2 = {
-        _id:findHisRooms.chats[chatLength-1]._id,
+        _id:chatRoom,
         id:_id,
         date:new Date()
     }
     findMyRooms.chats.push(user2);
     findMyRooms.save();
     findHisRooms.save();
-    res.json({message:'Room Created.',status:200});
+    res.json({message:'Room Created.',room:chatRoom,name:userName,status:200});
 
     
     

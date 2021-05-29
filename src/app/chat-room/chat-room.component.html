@@ -1,6 +1,6 @@
 <div class="chat-main">
-    <h2 *ngIf='user' class="chat-heading">{{user.room}} Room</h2>
-    <app-messages [messages]='chats'></app-messages>
+    <h2 *ngIf='name' class="chat-heading">Chatting with {{name}}</h2>
+    <app-messages [messages]='chats' [user]='user'></app-messages>
     <app-input (sendMessage)='getMessage($event)'></app-input>
 </div>
 

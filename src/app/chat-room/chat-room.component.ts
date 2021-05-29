@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalstorageService } from '../localstorage.service';
 import { SocketService } from '../socket.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
@@ -8,9 +9,11 @@ import { SocketService } from '../socket.service';
 })
 export class ChatRoomComponent implements OnInit {
   user:{name:string;room:string};
-  constructor(private realtime:SocketService, private store:LocalstorageService) { 
-    this.user = this.store.get('user');
-    console.log(this.user)
+  roomId:string;
+  name:string;
+  
+  constructor(private realtime:SocketService, private store:LocalstorageService , private parameters:ActivatedRoute) { 
+    
   }
   chats=[];
   getMessage(event){
@@ -21,6 +24,9 @@ export class ChatRoomComponent implements OnInit {
     this.realtime.socket.emit('disconnected',{user:this.user});
   }
   ngOnInit() {
+    this.roomId = this.parameters.snapshot.paramMap.get('room');
+    this.name = this.parameters.snapshot.paramMap.get('name');
+    this.user = {name:this.store.get('user').name,room:this.roomId};
   }
 
 }
