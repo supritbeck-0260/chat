@@ -15,8 +15,10 @@ interface User{
 export class AllusersComponent implements OnInit {
   users:User;
   token:string;
+  id:string;
   constructor(private http:HttpService , private router:Router , private store:LocalstorageService) {
     this.token = this.store.get('user').token;
+    this.id = this.store.get('user').id;
    }
   clickHandler(user){
     this.http.gotoRoom({...user,token:this.token}).subscribe((data:any)=>{
