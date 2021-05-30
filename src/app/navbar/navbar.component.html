@@ -3,17 +3,17 @@
         <a routerLink=''>
             <span class="home">Home</span>
         </a>
-        <a routerLink='signup'>
+        <a routerLink='signup' *ngIf="!(isLoggedIn$ | async)">
             <span class="join">Signup</span>
         </a>
-        <a routerLink='login'>
+        <a routerLink='login' *ngIf="!(isLoggedIn$ | async)">
             <span class="join">Login</span>
         </a>
-        <a routerLink='users'>
+        <a routerLink='users' *ngIf="isLoggedIn$ | async">
             <span class="join">Chats</span>
         </a>
-        <a (click)='exit()'>
-            <span class="exit">Exit</span>
+        <a (click)='exit()' *ngIf="isLoggedIn$ | async">
+            <span class="exit">Logout</span>
         </a>   
     </h2>
 </div>

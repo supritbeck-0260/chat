@@ -17,8 +17,10 @@ export class AllusersComponent implements OnInit {
   token:string;
   id:string;
   constructor(private http:HttpService , private router:Router , private store:LocalstorageService) {
-    this.token = this.store.get('user').token;
-    this.id = this.store.get('user').id;
+    const data = this.store.get('user');
+    if(!data) return;
+    this.token = data.token;
+    this.id = data.id;
    }
   clickHandler(user){
     this.http.gotoRoom({...user,token:this.token}).subscribe((data:any)=>{

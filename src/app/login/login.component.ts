@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { HttpService } from '../http.service';
 import { LocalstorageService } from '../localstorage.service';
 interface response{
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.message = data.message;
  
       if(data.status == 200) {
-        this.store.set('user',{name:data.name,token:data.token,id:data.id})
+        this.auth.login({name:data.name,token:data.token,id:data.id});
         this.router.navigate(['users']);
         return 
       };
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor(private fb: FormBuilder ,private http:HttpService, private router:Router , private store:LocalstorageService) {}
+  constructor(private fb: FormBuilder ,private http:HttpService, private router:Router , private store:LocalstorageService, private auth:AuthService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
