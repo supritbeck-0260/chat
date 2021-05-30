@@ -17,10 +17,6 @@ const routes: Routes = [
     component: ChatRoomComponent
   },
   {
-    path:'join',
-    component: JoinComponent
-  },
-  {
     path:'signup',
     component:FormComponent
   },
