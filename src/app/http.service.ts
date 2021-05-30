@@ -27,4 +27,11 @@ export class HttpService {
   getMessages(data){
     return this.http.post('api/messages',data);
   }
+  isLoggedIn(data){
+    return this. http.get('api/isloggedin',{
+      headers:{
+        authentication:data
+      }
+    });
+  }
 }

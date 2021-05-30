@@ -109,4 +109,8 @@ router.post('/messages', async (req,res)=>{
     res.json({messages:'No messages found!',status:400});
     
 });
+
+router.get('/isloggedin',Auth, async (req,res)=>{
+    res.json({loggedin:true,status:200});
+});
 module.exports = router;

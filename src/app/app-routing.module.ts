@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { HomeComponent } from './home/home.component';
-import { JoinComponent } from './join/join.component';
 import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
 import { AllusersComponent } from './allusers/allusers.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [   
   {
@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   {
     path:'chat',
-    component: ChatRoomComponent
+    component: ChatRoomComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'signup',
@@ -26,7 +27,8 @@ const routes: Routes = [
   },
   {
     path:'users',
-    component:AllusersComponent
+    component:AllusersComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'**',
