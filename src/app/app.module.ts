@@ -26,6 +26,7 @@ import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import {ZoroModule} from './zorro/zorro.module';
 import { LoginComponent } from './login/login.component';
 import { AllusersComponent } from './allusers/allusers.component';
+import { SearchPipe } from './search.pipe';
 
 registerLocaleData(en);
 
@@ -50,6 +51,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     FormComponent,
     LoginComponent,
     AllusersComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

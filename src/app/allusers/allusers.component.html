@@ -3,7 +3,8 @@
         <h3 id='header'>Users</h3>
         <div *ngIf='!users' class="loader"><nz-spin nzSimple class="spin"></nz-spin></div>
         <div *ngIf='users'>
-            <div *ngFor="let user of users">
+            <input nz-input placeholder="search" nzSize="large" [(ngModel)]='searchText'/>
+            <div *ngFor="let user of users | search:searchText">
             <p (click)='clickHandler(user)'*ngIf='id !== user._id' class="user-list">
                     <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
                     <span class="user-name">{{user.userName}}</span> 
