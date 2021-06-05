@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const router = require('./router');
 require('./db.connect');
 app.use(bodyParser.json());
+app.use(express.static('public/chat'));
 app.use('/api',router);
 app.use(cors());
 app.use(cookieParser());
