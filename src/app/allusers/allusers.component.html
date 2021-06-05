@@ -3,9 +3,9 @@
         <h3 class='header'>Users</h3>
         <div *ngIf='!users' class="loader"><nz-spin nzSimple class="spin"></nz-spin></div>
         <input *ngIf='users' nz-input placeholder="search" nzSize="large" [(ngModel)]='searchText'/>
-        <div *ngIf='recent.length'>
+        <div *ngIf='recent && !searchText'>
             <h3>Recent Chats</h3>
-            <div *ngFor="let user of recent">
+            <div *ngFor="let user of recent | hideRecent:searchText">
                 <p (click)='clickHandler(user)'*ngIf='id !== user._id' class="user-list">
                         <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
                         <span class="user-name">{{user.userName}}</span> 

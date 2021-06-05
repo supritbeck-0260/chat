@@ -27,6 +27,7 @@ import {ZoroModule} from './zorro/zorro.module';
 import { LoginComponent } from './login/login.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import { SearchPipe } from './search.pipe';
+import { HideRecentPipe } from './hide-recent.pipe';
 
 registerLocaleData(en);
 
@@ -52,6 +53,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     LoginComponent,
     AllusersComponent,
     SearchPipe,
+    HideRecentPipe,
   ],
   imports: [
     BrowserModule,
