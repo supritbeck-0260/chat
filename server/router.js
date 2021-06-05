@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const Room = require('./modals/room');
 const Auth = require('./auth/auth');
 const Message = require('./modals/messages');
+const user = require('./modals/user');
 router.post('/signup',async (req,res)=>{
     try {
         const {email,userName,password} = req.body;
@@ -112,5 +113,23 @@ router.post('/messages', async (req,res)=>{
 
 router.get('/isloggedin',Auth, async (req,res)=>{
     res.json({loggedin:true,status:200});
+});
+
+router.post('/recentchats',async (req,res)=>{
+try {
+    const {id} = req.body;
+    const findRoom = await Room.findById({_id:id},{_id:0,__v:0});
+    const findUsers = await User.find({},{__v:0,password:0,email:0});
+    if(!findRoom)res.json(null);
+    const users = findUsers.filter(data=>{
+        for(let elm of findRoom.chats){
+            if(data._id == elm.id.trim()) return true;
+        }
+        return false;
+    });
+    res.json(users);
+} catch (error) {
+    res.json({message:'Server Error',status:401});
+}
 });
 module.exports = router;

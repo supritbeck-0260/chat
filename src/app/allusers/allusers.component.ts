@@ -16,6 +16,7 @@ export class AllusersComponent implements OnInit {
   users:User;
   token:string;
   id:string;
+  recent:any[];
   constructor(private http:HttpService , private router:Router , private store:LocalstorageService) {
     const data = this.store.get('user');
     if(!data) return;
@@ -29,9 +30,15 @@ export class AllusersComponent implements OnInit {
     
   }
   ngOnInit() {
+    if(this.id) {
+      this.http.recentChats({id:this.id}).subscribe((data:any[])=>{
+      if(data) this.recent = data;
+    })
+  }
     this.http.getusers().subscribe((data:User)=>{
       if(data) this.users = data;
     });
+
   }
 
 }

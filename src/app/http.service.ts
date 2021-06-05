@@ -28,10 +28,13 @@ export class HttpService {
     return this.http.post('api/messages',data);
   }
   isLoggedIn(data){
-    return this. http.get('api/isloggedin',{
+    return this.http.get('api/isloggedin',{
       headers:{
         authentication:data
       }
     });
+  }
+  recentChats(id){
+    return this.http.post('api/recentchats',id);
   }
 }
