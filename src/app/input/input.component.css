@@ -18,3 +18,9 @@
 .input-text{
     width: 20vw;
 }
+
+@media (max-width: 1080px) {
+    .input-text{
+        width: 50vw;
+    }
+}

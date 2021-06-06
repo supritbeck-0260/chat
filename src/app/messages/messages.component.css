@@ -47,3 +47,8 @@
     margin: 0 5px;
     font-size: 8px;
 }
+@media (max-width: 1080px) {
+    .message-main{
+        width: 90vw;
+    }
+}

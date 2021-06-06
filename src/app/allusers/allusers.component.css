@@ -1,6 +1,7 @@
 .user-row{
 display: flex;
 justify-content: center;
+width: 100%;
 }
 .user-column{
     background: rgba(255,255,255,0.2);
